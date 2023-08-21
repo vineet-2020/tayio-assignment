@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## `Running the App`
+
+
+Clone the Repository: Begin by cloning the repository containing the app's source code to your local machine using the following command: git clone <repository-url>
+Navigate to Project Directory: Change your working directory to the root folder of the cloned repository: cd <repository-folder>
+Install Dependencies: Install the required dependencies for the app. This can be done using a package manager like npm or yarn: npm install
+Start the App: After the dependencies are installed, you can start the app using the following command: npm start
+
+
+
 ## Available Scripts
 
 
