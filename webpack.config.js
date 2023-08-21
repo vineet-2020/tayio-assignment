@@ -2,7 +2,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
       path: __dirname + '/build',
-      publicPath: '/tayio-assignment',
+      publicPath: '/',
       filename: 'bundle.js'
     },
     devServer: {
