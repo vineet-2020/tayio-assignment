@@ -5,11 +5,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## `Running the App`
 
 
-Clone the Repository: Begin by cloning the repository containing the app's source code to your local machine using the following command: git clone <repository-url>
-Navigate to Project Directory: Change your working directory to the root folder of the cloned repository: cd <repository-folder>
-Install Dependencies: Install the required dependencies for the app. This can be done using a package manager like npm or yarn: npm install
-Start the App: After the dependencies are installed, you can start the app using the following command: npm start
+## 1. Clone the Repository: 
+Begin by cloning the repository containing the app's source code to your local machine using the following command:
 
+```js 
+git clone <repository-url>
+```
+## 2. Navigate to Project Directory: 
+Change your working directory to the root folder of the cloned repository: 
+
+```js
+cd <repository-folder>
+```
+## 3. Install Dependencies: 
+Install the required dependencies for the app. This can be done using a package manager like npm or yarn: 
+```js
+npm install
+```
+## 4. Start the App: 
+After the dependencies are installed, you can start the app using the following command: 
+```js
+npm start
+```
+This will start the development server and open the app in your default web browser. If it doesn't open automatically, you can access it by navigating to http://localhost:3000 in your browser.
 
 
 ## Available Scripts
