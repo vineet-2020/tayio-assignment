@@ -1,0 +1,63 @@
+name: Deploy Quasar Project to Random Github Pages
+
+on:
+  pull_request:
+    types:
+      - opened
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build React Project
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: react-build
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    name: Deploy
+    steps:
+      - name: Deploy to Random GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          artifact-name: quasar-dist
+      - name: Get Deployment URL
+        id: deployment_url
+        run: echo "Deployed at: ${{ steps.deployment.outputs.page_url }}"
+  
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Deployment URL
+        run: |
+          URL="${{ needs.deploy.outputs.deployment_url }}"
+          echo "Deployment URL: $URL"
+          # You can notify or print the URL as needed
