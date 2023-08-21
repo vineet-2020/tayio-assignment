@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
-import '../styles/leaflet.css'
 import axios from 'axios';
 
 interface CountryData {

@@ -2,7 +2,7 @@
   "name": "contact-management-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/tayio-assignment",
+  "homepage": "https://vineet-2020.github.io/tayio-assignment",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -34,6 +34,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
