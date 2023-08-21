@@ -2,6 +2,7 @@
   "name": "contact-management-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vineet-2020.github.io/tayio-assignment",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
@@ -30,9 +31,7 @@
     "redux": "^4.2.1",
     "tailwindcss": "^3.3.3",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://vineet-2020.github.io/tayio-assignment"
-
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
