@@ -5,6 +5,7 @@ import { addContact, updateContact, removeContact } from '../redux/contactsSlice
 import BarChart from './BarChart';
 import CovidMap from './CovidMap';
 import DataDisplay from './DataDisplay';
+
 interface Contact {
   id: string;
   firstName: string;
@@ -12,7 +13,8 @@ interface Contact {
   email: string;
   phoneNumber: string;
 }
-const ContactPage: React.FC = () => {
+
+const TryPage: React.FC = () => {
   const contacts = useSelector((state: RootState) => state.contacts);
   const dispatch = useDispatch();
 
@@ -26,7 +28,6 @@ const ContactPage: React.FC = () => {
   const handleTabChange = (tab: 'contacts' | 'charts') => {
     setActiveTab(tab);
   };
-
   const handleEdit = (contact: Contact) => {
     setSelectedContact(contact);
     setFirstName(contact.firstName);
@@ -51,7 +52,7 @@ const ContactPage: React.FC = () => {
     console.log(newContact);
 
     dispatch(updateContact(newContact));
-    // }
+
 
 
 
@@ -60,31 +61,13 @@ const ContactPage: React.FC = () => {
     setPhoneNumber('');
     setEmail('');
     setSelectedContact(null);
-    // console.log(contact)
-    // setSelectedContact(contact);
-    // setFirstName(contact.firstName);
-    // setLastName(contact.lastName);
-    // setPhoneNumber(contact.phoneNumber);
-    // setEmail(contact.email);
-    // console.log(contact)
-    // dispatch(updateContact(contact));
-    // setSelectedContact(null);
+
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Submit button clicked");
-    // if (selectedContact) {
-    //   console.log("no button clicked");
-    //   const updatedContact: Contact = {
-    //     ...selectedContact,
-    //     firstName,
-    //     lastName,
-    //     phoneNumber,
-    //     email,
-    //   };
-    //   dispatch(updateContact(updatedContact));
-    // } else {
+
     console.log("add button clicked");
     console.log(selectedContact);
     const newContact: Contact = {
@@ -97,7 +80,7 @@ const ContactPage: React.FC = () => {
     console.log(newContact);
 
     dispatch(addContact(newContact));
-    // }
+
 
 
 
@@ -107,12 +90,15 @@ const ContactPage: React.FC = () => {
     setEmail('');
     setSelectedContact(null);
   };
+
+  // ... Your other functions ...
+
   return (
     <div className="p-4">
       <h2 className="text-lg font-semibold mb-4 text-center mb-6">Assignment</h2>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-2 rounded-3xl mt-4 flex flex-col bg-gray-100 p-4">
-          <button
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <div className="md:col-span-2 rounded-3xl mt-4 flex flex-col bg-gray-100 p-4">
+        <button
             className={`${activeTab === 'contacts' ? 'text-blue-500 bg-gray-300 font-bold rounded-2xl'   : 'text-gray-600'
               } hover:text-blue-500 hover:bg-gray-300 rounded-2xl mb-4`}
             onClick={() => handleTabChange('contacts')}
@@ -127,10 +113,10 @@ const ContactPage: React.FC = () => {
             Charts
           </button>
         </div>
-        <div className="col-span-8">        
+        <div className="md:col-span-8">
           {activeTab === 'contacts' ? (
-            <div className='bg-gray-100 p-6 mt-4 rounded-3xl h-auto '>
-              <div className='flex mb-6'>
+            <div className="bg-gray-100 p-6 mt-4 rounded-3xl h-auto">
+                 <div className='flex mb-6'>
               <h3 className="text-lg font-semibold">
                     Contact List
                   </h3>
@@ -269,19 +255,20 @@ const ContactPage: React.FC = () => {
                   </form>
                 </div>
               )}
-            
             </div>
           ) : (
-            <div className='bg-gray-100 p-6 mt-4 rounded-3xl h-auto'>
-              <div className='flex items-center justify-between'>
+            <div className="bg-gray-100 p-6 mt-4 rounded-3xl h-auto">
+              <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Charts</h3>
                   <p>Charts will be displayed here.</p>
                 </div>
-                <DataDisplay/>
+                <DataDisplay />
               </div>
-              <BarChart/>
-              <CovidMap/>
+              <div className="overflow-x-auto">
+                <BarChart  /> {/* Adjust width as needed */}
+              </div>
+              <CovidMap />
             </div>
           )}
         </div>
@@ -290,4 +277,4 @@ const ContactPage: React.FC = () => {
   );
 };
 
-export default ContactPage;
+export default TryPage;
