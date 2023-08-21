@@ -30,9 +30,7 @@
     "redux": "^4.2.1",
     "tailwindcss": "^3.3.3",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
-    "homepage": "https://vineet-2020.github.io/tayio-assignment"
-
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -57,5 +55,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
