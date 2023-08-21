@@ -24,6 +24,7 @@ const ContactPage: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [addContactClicked, setAddContactClicked] = useState(false);
 
   // Function to handle tab change
   const handleTabChange = (tab: 'contacts' | 'charts') => {
@@ -42,6 +43,10 @@ const ContactPage: React.FC = () => {
   // Function to handle deleting a contact
   const handleDelete = (id: string) => {
     dispatch(removeContact(id));
+    setFirstName('');
+    setLastName('');
+    setPhoneNumber('');
+    setEmail('');
     setSelectedContact(null);
   };
 
@@ -118,6 +123,7 @@ const ContactPage: React.FC = () => {
                 <button
                   className="text-blue-500 hover:underline ml-4 bg-blue-100 rounded-[10px] px-2"
                   onClick={() => {
+                    setAddContactClicked(true)
                     setSelectedContact({
                       id: '',
                       firstName: '',
@@ -132,10 +138,11 @@ const ContactPage: React.FC = () => {
               </div>
               <div className=''>
                 {/* Display message when no contacts are available */}
-                {contacts.length === 0 ? (
+                {contacts.length === 0 && !addContactClicked && (
                   <p className="text-blue-500 text-center hover:underline ml-4 bg-blue-100 rounded-[10px] px-2">No contacts have been saved.</p>
-                ) : ('')}
+                )}
               </div>
+
               <ul>
                 {/* Render the list of contacts */}
                 {contacts.map((contact) => (
@@ -170,7 +177,48 @@ const ContactPage: React.FC = () => {
                         onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
-                    {/* ... Repeat for other fields ... */}
+                    <div className="mb-2">
+                      <label htmlFor="lastName" className="block text-gray-700">
+                        Last Name:
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        className="w-full border rounded py-1 px-2"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+                    <div className="mb-2">
+                      <label htmlFor="email" className="block text-gray-700">
+                        Email:
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        className="w-full border rounded py-1 px-2"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="mb-2">
+                      <label htmlFor="phoneNumber" className="block text-gray-700">
+                        Phone Number:
+                      </label>
+                      <input
+                        type="tel" // Use type "tel" for phone numbers
+                        id="phoneNumber"
+                        className="w-full border rounded py-1 px-2"
+                        value={phoneNumber}
+                        onChange={(e) => {
+                          const inputPhoneNumber = e.target.value;
+                          if (inputPhoneNumber.length <= 10) {
+                            setPhoneNumber(inputPhoneNumber);
+                          }
+                        }}
+                        maxLength={10} // Limit input to 10 characters
+                      />
+                    </div>
                     {selectedContact.id ? (
                       <button
                         onClick={() => handleUpdate(selectedContact)}
