@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import AddContactForm from './components/AddContactForm';
 // import ContactList from './components/ContactList';
 // import ContactDetails from './components/ContactDetails';
-import ContactPage from '../src/pages/ContactPage';
+import ContactPage from './pages/ContactPage';
 import './styles/styles.css';
 
 const App: React.FC = () => {
