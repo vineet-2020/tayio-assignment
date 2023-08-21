@@ -42,6 +42,29 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## `API Endpoint Used`
+
+The app uses three API endpoints to fetch COVID-19 related data: one for global COVID-19 statistics and another for country-specific data.
+
+Global COVID-19 Data:
+
+Endpoint: https://disease.sh/v3/covid-19/all
+Purpose: This endpoint provides global COVID-19 statistics, including the total number of cases, deaths, and recoveries worldwide.
+Usage: The DataDisplay component fetches data from this endpoint to display global COVID-19 statistics.
+
+
+Country-specific COVID-19 Data:
+
+Endpoint: https://disease.sh/v3/covid-19/countries
+Purpose: This endpoint provides COVID-19 data for individual countries, including the number of active cases, recoveries, and deaths. The data is provided in an array format with details for each country.
+Usage: The CovidMap component fetches data from this endpoint to display country-specific data on the map.
+
+Historical COVID-19 Data:
+
+Endpoint: https://disease.sh/v3/covid-19/historical/all?lastdays=all
+Purpose: This endpoint is used to retrieve historical COVID-19 data on a global scale. It provides historical data for the total number of cases, deaths, and recoveries over a period of time.
+Usage: The BarChart component in your application fetches data from this endpoint to create a bar chart visualization of the historical COVID-19 data. The data obtained includes the cumulative number of cases, deaths, and recoveries for each day, allowing you to visualize the progression of the pandemic over time.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
