@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip, LayerGroup, Circle } from 'react-leaflet';
+import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 
@@ -13,17 +13,6 @@ interface CountryData {
     recovered: number;
     deaths: number;
 }
-const center = [51.505, -0.09]
-const rectangle = [
-  [51.49, -0.08],
-  [51.5, -0.06],
-]
-
-const fillBlueOptions = { fillColor: 'blue' }
-const fillRedOptions = { fillColor: 'red' }
-const greenOptions = { color: 'green', fillColor: 'green' }
-const purpleOptions = { color: 'purple' }
-
 const CovidMap: React.FC = () => {
     const [countriesData, setCountriesData] = useState<CountryData[]>([]);
 

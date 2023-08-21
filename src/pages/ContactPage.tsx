@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { addContact, updateContact, removeContact } from '../redux/contactsSlice';
 import BarChart from './BarChart';
 import CovidMap from './CovidMap';
 import DataDisplay from './DataDisplay';
-import axios from 'axios';
-
 interface Contact {
   id: string;
   firstName: string;
