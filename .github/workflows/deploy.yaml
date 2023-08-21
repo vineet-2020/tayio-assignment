@@ -50,12 +50,3 @@ jobs:
         id: deployment_url
         run: echo "Deployed at: ${{ steps.deployment.outputs.page_url }}"
   
-  notify:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Deployment URL
-        run: |
-          URL="${{ needs.deploy.outputs.deployment_url }}"
-          echo "Deployment URL: $URL"
-          # You can notify or print the URL as needed
